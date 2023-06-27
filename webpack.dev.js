@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
@@ -21,12 +21,20 @@ module.exports = {
             }
         ]
     },
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
+    // output: {
+    //     path: path.resolve(__dirname, "dist"),
+    // },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
         new CleanWebpackPlugin({
+            // cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")],
             // Simulate the removal of files
             dry: true,
             // Write Logs to Console
