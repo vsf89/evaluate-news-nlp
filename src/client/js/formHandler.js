@@ -3,7 +3,7 @@ function handleSubmit(event) {
 
 
     const formdata = new FormData();
-formdata.append("key", "9a8415c3fcdb1ec648a1842a749f8455");
+formdata.append("key", "Key here");
 formdata.append("txt", "YOUR TEXT happy HERE");
 formdata.append("lang", "en");  // 2-letter code, like en es fr ...
 
