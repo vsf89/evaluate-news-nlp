@@ -31,23 +31,6 @@ function handleSubmit(event) {
   console.log("::: Form Submitted :::")
   updateUI();
 
-  //   getResult(formText).then(function (projectData) {
-  //         // Add data      
-  //     console.log("projectData:"+ projectData);    
-  //     postData('/dist/index.html', { polarity: projectData.score_tag, subjectivity: projectData.subjectivity, text: formText });
-  //     updateUI();
-  // })
-
-  // fetch('https://api.meaningcloud.com/sentiment-2.1')
-  // .then(res => res.json())
-  // .then(function(res) {
-  //   console.log("res0" + res);
-  //     document.getElementById('results').innerHTML = res.message
-  // })    
-
-  // console.log("res: " + res);
-
-
 
   const postData = async (url = baseURL, data = {}) => {
 
@@ -68,9 +51,6 @@ function handleSubmit(event) {
       // appropriately handle the error
     }
   }
-
-
-
 }
 
 const updateUI = async () => {
@@ -90,14 +70,8 @@ const updateUI = async () => {
       document.getElementById('polarId').innerHTML = ConvertPolarity(polarity);
     }
 
-    const subjectivity = allData["subjectivity"];
-    // console.log("here46");
-    // console.log(subjectivity);
-   // document.getElementById('results').innerHTML = allData["subjectivity"];
-   
-    document.getElementById('subjId').innerHTML = allData["subjectivity"];
-    
-    
+    const subjectivity = allData["subjectivity"];   
+    document.getElementById('subjId').innerHTML = subjectivity;
   }
   catch (error) {
     console.log("error", error);
@@ -128,23 +102,4 @@ function ConvertPolarity(pConst) {
 
 }
 
-// `${baseURL}?key=${process.env.API_KEY}&lang=auto&url=${url}`
-// const res = await fetch("https://api.meaningcloud.com/sentiment-2.1"+'?key='+ process.env.API_KEY)
-//const res = await fetch("https://api.meaningcloud.com/sentiment-2.1'" + '?formText=' + formText + '&key=' + process.env.API_KEY)
-const getResult = async (formText) => {
-  console.log("here3");
-  const res = await fetch("https://api.meaningcloud.com/sentiment-2.1")
-
-  try {
-    const data = await res.json();
-    console.log(data)
-    return data;
-  } catch (error) {
-
-    console.log("error", error);
-  }
-}
-
-function onBlur() { }
-
-export { handleSubmit, onBlur }
+export { handleSubmit }
