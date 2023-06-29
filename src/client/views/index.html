@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Test</title>        
-    </head>
 
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+</head>
 
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
+<body>
 
-        <main>
-            <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">             
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            </section>
+    <header>
+        <div class="">
+            Logo
+        </div>
+        <div class="">
+            navigation
+        </div>
+    </header>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
+    <main>
+        <section>
+            <form class="" onsubmit="return Client.handleSubmit(event)">
+                <input id="name" type="text" name="input" value="" placeholder="Name">
+                <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"
+                    ?onsubmit="return handleSubmit(event)">
+            </form>
+        </section>
 
-        <footer>
-            <p>This is a footer</p>
-        </footer>
+        <section>
+            <strong>Form Results:</strong>
+            <table>
+                <tr><td><b>Polarity: </b></td><td><div id="polarId"></div> </td> </tr>
+                <tr><td><b>Subjectivity: </b></td><td><div id="subjId"></div> </td></tr>
+                <tr><td><b>Text: </b></td><td><div id="textId"></div> </td></tr>        
+            </table>         
+        </section>
+    </main>
 
-    </body>   
+    <footer>
+        <p>This is a footer</p>
+    </footer>
+
+</body>
+
 </html>
