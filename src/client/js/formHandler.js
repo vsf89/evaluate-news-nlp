@@ -1,5 +1,5 @@
-let baseURL = "https://api.meaningcloud.com/sentiment-2.1";
-const apiKey = "9a8415c3fcdb1ec648a1842a749f8455";
+let baseURL = "https://api.meaningcloud.com/sentiment-2.1"; 
+const apiKey = ""; // TODO: Start from here - remove API key
 
 function handleSubmit(event) {
   event.preventDefault()
