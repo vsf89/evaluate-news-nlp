@@ -19,13 +19,21 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static('dist'));
 
-console.log('dirName:' + __dirname);
+console.log('dirName:' , __dirname);
 
 app.get('/', function (req, res) {
-    console.log('here');
+    console.log('here111111111');
     res.sendFile('dist/index.html')
     //res.sendFile(path.resolve('src/client/views/index.html'))
 })
+
+app.get('/test', function (req, res) {
+    console.log("Here 22222222222");
+    console.log(res);
+    apiDataProcess().then((projectData) => {
+        res.send(projectData);
+    });
+});
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
@@ -38,14 +46,11 @@ app.listen(8081, function () {
 // })
 
 
-
-
-
-
 const apiDataProcess = async () => {
+    console.log("apiDataProcess", projectData.text);
     const formdata = new FormData();
     formdata.append("key", process.env.API_KEY);
-    formdata.append("txt", "YOUR TEXT happy HERE");
+    formdata.append("txt", projectData.text);
     formdata.append("lang", "en");  // 2-letter code, like en es fr ...
 
     const requestOptions = {
@@ -65,30 +70,17 @@ const apiDataProcess = async () => {
     }
 }
 
-app.get('/test', function (req, res) {
-    console.log("Here 2");
-    console.log(projectData);
-    apiDataProcess().then((projectData) => {
-        res.send(projectData);
-    });
-});
+app.post('/dist/index.html', postData);
 
-
-// .then(function(res) {        
-//     document.getElementById('results').innerHTML = res;
-//     })
-
-// app.post('/dist/index.html', postData);
-
-// function postData(req, res) {
-//       console.log("req Body: " + req.body);
-//     newEntry = {
-//         temperature: req.body.FormData,
-//         date: req.body.date,
-//         userResponse: req.body.userResponse,
-//         cityName: req.body.cityName
-//     }
-//     projectData = newEntry;
-//     res.send(projectData);
-// }
+function postData(req, res) {   
+    console.log("req Body1: ", req.body);   
+    newEntry = {
+        polarity: req.body.polarity,
+        subjectivity: req.body.subjectivity,
+        text: req.body.text
+    }
+  projectData = newEntry;
+  console.log("req Body projectData: ", projectData);
+  res.send(projectData);
+}
 
