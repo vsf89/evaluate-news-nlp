@@ -10,6 +10,7 @@ This project includes a form that accepts a user input in the form of a text or 
 - [Project Description](#project-description)
 - [Table of Contents](#table-of-contents)
 - [How to run the app](#how-to-run-the-app)
+- [Deploment Information](#deployment-info)
 - [Dependencies](#dependencies)
 
 
@@ -18,6 +19,11 @@ Download the code
 In VS code, go to project folder.
 In the terminal, type commands to run the server and then start the app - "npm run build-prod" and then "npm start"
 In a browser, go to http://localhost:8081/ and input the text/URL in the text box and click on Submit
+
+[(Back to top)](#table-of-contents)
+
+# Deployment Information
+https://imaginative-pixie-60d6f4.netlify.app
 
 [(Back to top)](#table-of-contents)
 
