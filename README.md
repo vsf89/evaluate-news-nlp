@@ -10,7 +10,7 @@ This project includes a form that accepts a user input in the form of a text or 
 - [Project Description](#project-description)
 - [Table of Contents](#table-of-contents)
 - [How to run the app](#how-to-run-the-app)
-- [Deploment Information](#deployment-info)
+- [Deployment Information](#deployment-information)
 - [Dependencies](#dependencies)
 
 
