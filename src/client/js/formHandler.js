@@ -1,23 +1,31 @@
-let baseURL = "https://api.meaningcloud.com/sentiment-2.1"; 
-const apiKey = ""; // TODO: Start from here - remove API key
+let baseURL = "/test";
+
 
 function handleSubmit(event) {
   event.preventDefault()
-
+  // console.log(`Your API key1 is ${process.env.API_KEY}`);
   // check what text was put into the form field
   let formText = document.getElementById('name').value
-  Client.checkForName(formText)
-
+  const result = Client.checkForName(formText)
+  if(result == false)
+    return;
+  console.log("result: ", result);
   console.log("::: Form Submitted :::")
 
-  getResult(baseURL, formText, apiKey).then(function (projectData) {
+
+  // getResult(baseURL, formText, apiKey).then(function (projectData) {
+  getResult(baseURL, formText).then(function (projectData) {
     // Add data
     let userText="";
     const sentenceList = projectData["sentence_list"];
+    console.log("sentenceList: ", sentenceList);
     for (let index = 0; index < sentenceList.length; index++) {
+      
       const element = sentenceList[index];    
-      userText = element["text"];   
+      userText = formText;   
+     // userText = element["text"];
       console.log("projectData1: ", userText);
+      console.log("projectData123456: ", formText);
     }
     console.log("projectData13333: ", userText);
     postData('/dist/index.html', { polarity: ConvertPolarity(projectData["score_tag"]), subjectivity: projectData["subjectivity"], text: userText});
@@ -26,8 +34,10 @@ function handleSubmit(event) {
 })
 }
 
-const getResult = async (baseURL, formText, apiKey) => {
-  const res = await fetch(baseURL + '?txt=' + formText + '&lang=' + "en" + '&key=' + apiKey)
+// const res = await fetch(baseURL + '?txt=' + formText + '&lang=' + "en" + '&key=' + apiKey)
+// const getResult = async (baseURL, formText, apiKey) => {
+const getResult = async (baseURL, formText) => {
+  const res = await fetch(baseURL + '?txt=' + formText + '&lang=' + "en")
   try {
       const data = await res.json();
       console.log("data1:", data)

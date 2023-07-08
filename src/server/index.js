@@ -8,6 +8,7 @@ const apiResponse = require('./meaningCloudAPI.js')
 const bodyParser = require('body-parser')
 const cors = require('cors');
 projectData = {};
+clientData = {};
 
 
 console.log(`Your API key is ${process.env.API_KEY}`);
@@ -29,7 +30,8 @@ app.get('/', function (req, res) {
 
 app.get('/test', function (req, res) {
     console.log("Here 22222222222");
-    console.log(res);
+    //console.log("res.data", res.data["text"]); /
+    console.log("res.data", res.data); // TODO: Start from here - fetch text from form
     apiDataProcess().then((projectData) => {
         res.send(projectData);
     });
@@ -58,8 +60,9 @@ const apiDataProcess = async () => {
         body: formdata,
         redirect: 'follow'
     };
-
-    const response = await fetch("https://api.meaningcloud.com/sentiment-2.1", requestOptions);
+    let queryString = "https://api.meaningcloud.com/sentiment-2.1" + '?txt=' + formdata.get("txt") + '&lang=' + "en" + '&key=' + formdata.get("key")
+    console.log("QS:", queryString)
+    const response = await fetch(queryString, requestOptions);
     try {
         const data = await response.json();
         console.log(data);
@@ -73,7 +76,7 @@ const apiDataProcess = async () => {
 app.post('/dist/index.html', postData);
 
 function postData(req, res) {   
-    console.log("req Body1: ", req.body);   
+   // console.log("req Body1: ", req.body);   
     newEntry = {
         polarity: req.body.polarity,
         subjectivity: req.body.subjectivity,
