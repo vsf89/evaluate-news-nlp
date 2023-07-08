@@ -3,7 +3,6 @@ dotenv.config();
 
 var path = require('path')
 const express = require('express')
-//const mockAPIResponse = require('./mockAPI.js')
 const apiResponse = require('./meaningCloudAPI.js')
 const bodyParser = require('body-parser')
 const cors = require('cors');
@@ -22,16 +21,11 @@ app.use(express.static('dist'));
 
 console.log('dirName:' , __dirname);
 
-app.get('/', function (req, res) {
-    console.log('here111111111');
+app.get('/', function (req, res) {  
     res.sendFile('dist/index.html')
-    //res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-app.get('/test', function (req, res) {
-    console.log("Here 22222222222");
-    //console.log("res.data", res.data["text"]); /
-    console.log("res.data", res.data); // TODO: Start from here - fetch text from form
+app.get('/test', function (req, res) {  
     apiDataProcess().then((projectData) => {
         res.send(projectData);
     });
@@ -42,14 +36,7 @@ app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-
-// app.get('/test', function (req, res) {
-//     res.send(mockAPIResponse)
-// })
-
-
 const apiDataProcess = async () => {
-    console.log("apiDataProcess", projectData.text);
     const formdata = new FormData();
     formdata.append("key", process.env.API_KEY);
     formdata.append("txt", projectData.text);
@@ -60,12 +47,10 @@ const apiDataProcess = async () => {
         body: formdata,
         redirect: 'follow'
     };
-    let queryString = "https://api.meaningcloud.com/sentiment-2.1" + '?txt=' + formdata.get("txt") + '&lang=' + "en" + '&key=' + formdata.get("key")
-    console.log("QS:", queryString)
+    let queryString = "https://api.meaningcloud.com/sentiment-2.1" + '?txt=' + formdata.get("txt") + '&lang=' + "en" + '&key=' + formdata.get("key")    
     const response = await fetch(queryString, requestOptions);
     try {
-        const data = await response.json();
-        console.log(data);
+        const data = await response.json();    
         return data;
     }
     catch (error) {
@@ -75,15 +60,13 @@ const apiDataProcess = async () => {
 
 app.post('/dist/index.html', postData);
 
-function postData(req, res) {   
-   // console.log("req Body1: ", req.body);   
+function postData(req, res) {     
     newEntry = {
         polarity: req.body.polarity,
         subjectivity: req.body.subjectivity,
         text: req.body.text
     }
   projectData = newEntry;
-  console.log("req Body projectData: ", projectData);
   res.send(projectData);
 }
 
