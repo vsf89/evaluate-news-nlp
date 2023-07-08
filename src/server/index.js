@@ -3,7 +3,6 @@ dotenv.config();
 
 var path = require('path')
 const express = require('express')
-const apiResponse = require('./meaningCloudAPI.js')
 const bodyParser = require('body-parser')
 const cors = require('cors');
 projectData = {};
