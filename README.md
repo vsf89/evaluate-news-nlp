@@ -18,6 +18,7 @@ Download the code
 In VS code, go to project folder.
 In the terminal, type commands to run the server and then start the app - "npm run build-prod" and then "npm start"
 In a browser, go to http://localhost:8081/ and input the text/URL in the text box and click on Submit
+
 [(Back to top)](#table-of-contents)
 
 # Dependencies
@@ -40,4 +41,3 @@ devDependencies -
     "workbox-webpack-plugin": "^7.0.0"
 
 [(Back to top)](#table-of-contents)
-
