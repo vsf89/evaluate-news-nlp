@@ -23,7 +23,7 @@ In a browser, go to http://localhost:8081/ and input the text/URL in the text bo
 [(Back to top)](#table-of-contents)
 
 # Deployment Information
-https://imaginative-pixie-60d6f4.netlify.app
+https://imaginative-pixie-60d6f4.netlify.app/src/client/views/index.html
 
 [(Back to top)](#table-of-contents)
 
